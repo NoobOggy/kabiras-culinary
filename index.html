@@ -355,77 +355,6 @@
       box-shadow: 0 16px 40px rgba(249, 115, 22, 0.75);
     }
 
-    .checkout-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-      gap: 1.8rem;
-    }
-
-    .cart-list {
-      list-style: none;
-      font-size: 0.85rem;
-      margin-top: 0.4rem;
-    }
-
-    .cart-list li {
-      margin-bottom: 0.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-
-    .btn-remove {
-      border-radius: 999px;
-      border: none;
-      padding: 0.15rem 0.55rem;
-      font-size: 0.7rem;
-      background: #ef4444;
-      color: #f9fafb;
-      cursor: pointer;
-    }
-
-    .btn-remove:hover {
-      opacity: 0.9;
-    }
-
-    .payment-options {
-      display: grid;
-      gap: 0.6rem;
-      margin-top: 0.7rem;
-    }
-
-    .payment-btn {
-      border-radius: 0.7rem;
-      border: 1px solid #4b5563;
-      padding: 0.55rem 0.9rem;
-      font-size: 0.85rem;
-      cursor: pointer;
-      text-align: left;
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .payment-btn span {
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-
-    .payment-btn:hover {
-      border-color: #f97316;
-      background: rgba(249, 115, 22, 0.09);
-    }
-
-    .note {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.5rem;
-    }
-
     footer {
       border-top: 1px solid #1f2937;
       padding: 1.4rem 7%;
@@ -469,14 +398,10 @@
       .about-grid {
         grid-template-columns: 1fr;
       }
-      .checkout-layout {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 640px) {
-      nav a:nth-child(2),
-      nav a:nth-child(3) {
+      nav a:nth-child(2) {
         display: none;
       }
     }
@@ -486,7 +411,7 @@
   <header>
     <div class="logo-area">
       <div class="logo-img">
-        <!-- Rename your logo file to kabiras-logo.jpg and upload it next to index.html -->
+        <!-- Rename your logo file to kabiras-logo.jpg -->
         <img src="kabiras-logo.jpg" alt="Kabira's Culinary logo">
       </div>
       <div class="logo-text">KABIRA'S CULINARY</div>
@@ -495,7 +420,7 @@
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#menu">Menu</a>
-      <button class="btn-ghost" type="button" onclick="scrollToCheckout()">
+      <button class="btn-ghost" type="button" onclick="goToCheckout()">
         🛒 Cart <span id="cart-count" class="cart-count">0</span>
       </button>
     </nav>
@@ -520,7 +445,7 @@
         </div>
         <div class="hero-actions">
           <a href="#menu" class="btn-primary">Browse today's menu</a>
-          <button class="btn-ghost" type="button" onclick="scrollToCheckout()">
+          <button class="btn-ghost" type="button" onclick="goToCheckout()">
             View cart 🛒 <span id="cart-count-hero" class="cart-count">0</span>
           </button>
           <small>Order timing depends on availability and prep time.</small>
@@ -531,13 +456,12 @@
         <h2>Today's home kitchen</h2>
         <p>Cooked from home in small batches, with focus on taste, hygiene and comfort food.</p>
         <ul>
-          <li>✔ Warm, homemade Bangladeshi dishes</li>
+          <li>✔ Warm, homemade Bangladeshi-style dishes</li>
           <li>✔ Ideal for students, families, office lunches</li>
           <li>✔ Simple pricing between ৳200–৳500</li>
         </ul>
         <div class="hero-photo">
-          <!-- Replace with a nice food hero image: e.g. food1.jpg -->
-          <img src="food1.jpg" alt="Home cooked meal from Kabira's Culinary">
+          <img src="food1.jpg" alt="Red Chicken Curry from Kabira's Culinary">
         </div>
       </div>
     </section>
@@ -568,12 +492,12 @@
           <h3>Contact & Location</h3>
           <ul class="info-list">
             <li><strong>Address:</strong> Bashundhara R/A, Dhaka</li>
-            <li><strong>Phone:</strong> 017111222333</li>
+            <li><strong>Contact:</strong> 017111222333</li>
             <li><strong>Email:</strong> Kabira.Culinary@gmail.com</li>
           </ul>
           <p class="note" style="margin-top:0.7rem;">
-            Orders are usually taken in advance. Please contact by phone or message
-            if you need something urgent, bulk or for a special occasion.
+            Orders are usually taken in advance. Please contact by phone or email
+            for urgent or special orders.
           </p>
         </div>
       </div>
@@ -588,145 +512,83 @@
 
       <div class="menu-grid">
         <div class="card menu-card">
-          <img src="food1.jpg" alt="Chicken Biryani">
-          <h3>Chicken Biryani</h3>
-          <p class="menu-tagline">Fragrant basmati rice with tender chicken and homemade masala.</p>
-          <p class="price">৳320</p>
-          <button class="btn-add" type="button" onclick="addToCart('Chicken Biryani', 320)">Add to cart</button>
-        </div>
-
-        <div class="card menu-card">
-          <img src="food2.jpg" alt="Beef Tehari">
-          <h3>Beef Tehari</h3>
-          <p class="menu-tagline">Classic Dhaka-style tehari with soft beef pieces.</p>
-          <p class="price">৳380</p>
-          <button class="btn-add" type="button" onclick="addToCart('Beef Tehari', 380)">Add to cart</button>
-        </div>
-
-        <div class="card menu-card">
-          <img src="food3.jpg" alt="Chicken Curry with Rice">
-          <h3>Chicken Curry with Rice</h3>
-          <p class="menu-tagline">Light, homely chicken curry with steamed rice.</p>
+          <img src="food1.jpg" alt="Red Chicken Curry">
+          <h3>Red Chicken Curry</h3>
+          <p class="menu-tagline">Rich, spicy red chicken curry with a home-style flavour.</p>
           <p class="price">৳260</p>
-          <button class="btn-add" type="button" onclick="addToCart('Chicken Curry with Rice', 260)">Add to cart</button>
+          <button class="btn-add" type="button" onclick="addToCart('Red Chicken Curry', 260)">Add to cart</button>
         </div>
 
         <div class="card menu-card">
-          <img src="food4.jpg" alt="Vegetable Khichuri">
-          <h3>Vegetable Khichuri</h3>
-          <p class="menu-tagline">Comforting moong daal khichuri with mixed vegetables.</p>
-          <p class="price">৳220</p>
-          <button class="btn-add" type="button" onclick="addToCart('Vegetable Khichuri', 220)">Add to cart</button>
+          <img src="food2.jpg" alt="Grill Chicken">
+          <h3>Grill Chicken</h3>
+          <p class="menu-tagline">Juicy grilled chicken with light salad or sides.</p>
+          <p class="price">৳320</p>
+          <button class="btn-add" type="button" onclick="addToCart('Grill Chicken', 320)">Add to cart</button>
         </div>
 
         <div class="card menu-card">
-          <img src="food5.jpg" alt="Grilled Chicken with Rice">
-          <h3>Grilled Chicken with Rice</h3>
-          <p class="menu-tagline">Lightly marinated grilled chicken with butter rice.</p>
+          <img src="food3.jpg" alt="Beef Stir Fry">
+          <h3>Beef Stir Fry</h3>
+          <p class="menu-tagline">Tender beef strips with vegetables in a savoury sauce.</p>
+          <p class="price">৳380</p>
+          <button class="btn-add" type="button" onclick="addToCart('Beef Stir Fry', 380)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food4.jpg" alt="Beef Curry">
+          <h3>Beef Curry</h3>
+          <p class="menu-tagline">Slow-cooked beef in a rich, traditional curry.</p>
           <p class="price">৳350</p>
-          <button class="btn-add" type="button" onclick="addToCart('Grilled Chicken with Rice', 350)">Add to cart</button>
+          <button class="btn-add" type="button" onclick="addToCart('Beef Curry', 350)">Add to cart</button>
         </div>
 
         <div class="card menu-card">
-          <img src="food6.jpg" alt="Pasta Alfredo">
-          <h3>Pasta Alfredo</h3>
-          <p class="menu-tagline">Creamy white sauce pasta, mildly spiced for deshi taste.</p>
+          <img src="food5.jpg" alt="Mutton Kacchi Biriyani with Roast">
+          <h3>Mutton Kacchi Biriyani with Roast</h3>
+          <p class="menu-tagline">Festive-style kacchi with roast chicken on the side.</p>
+          <p class="price">৳480</p>
+          <button class="btn-add" type="button" onclick="addToCart('Mutton Kacchi Biriyani with Roast', 480)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food6.jpg" alt="Mutton Tehari">
+          <h3>Mutton Tehari</h3>
+          <p class="menu-tagline">Classic mutton tehari with fragrant rice and spices.</p>
+          <p class="price">৳420</p>
+          <button class="btn-add" type="button" onclick="addToCart('Mutton Tehari', 420)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food7.jpg" alt="Chicken Lolipop">
+          <h3>Chicken Lolipop</h3>
+          <p class="menu-tagline">Crispy chicken lolipops with dipping sauce.</p>
           <p class="price">৳300</p>
-          <button class="btn-add" type="button" onclick="addToCart('Pasta Alfredo', 300)">Add to cart</button>
+          <button class="btn-add" type="button" onclick="addToCart('Chicken Lolipop', 300)">Add to cart</button>
         </div>
 
         <div class="card menu-card">
-          <img src="food7.jpg" alt="Beef Curry with Paratha">
-          <h3>Beef Curry with Paratha</h3>
-          <p class="menu-tagline">Soft parathas served with slow-cooked beef curry.</p>
-          <p class="price">৳400</p>
-          <button class="btn-add" type="button" onclick="addToCart('Beef Curry with Paratha', 400)">Add to cart</button>
-        </div>
-
-        <div class="card menu-card">
-          <img src="food8.jpg" alt="Chicken Wrap">
-          <h3>Chicken Wrap</h3>
-          <p class="menu-tagline">Soft tortilla wrap filled with chicken, veggies and sauce.</p>
-          <p class="price">৳220</p>
-          <button class="btn-add" type="button" onclick="addToCart('Chicken Wrap', 220)">Add to cart</button>
-        </div>
-
-        <div class="card menu-card">
-          <img src="food9.jpg" alt="Mixed Fried Rice">
-          <h3>Mixed Fried Rice</h3>
-          <p class="menu-tagline">Egg, chicken and veggies in a flavourful fried rice.</p>
+          <img src="food8.jpg" alt="Chicken Polao with Egg">
+          <h3>Chicken Polao with Egg</h3>
+          <p class="menu-tagline">Light chicken polao served with boiled egg.</p>
           <p class="price">৳280</p>
-          <button class="btn-add" type="button" onclick="addToCart('Mixed Fried Rice', 280)">Add to cart</button>
+          <button class="btn-add" type="button" onclick="addToCart('Chicken Polao with Egg', 280)">Add to cart</button>
         </div>
 
         <div class="card menu-card">
-          <img src="food10.jpg" alt="Dessert Platter">
-          <h3>Dessert Platter</h3>
-          <p class="menu-tagline">Small selection of homemade desserts (changes day to day).</p>
-          <p class="price">৳240</p>
-          <button class="btn-add" type="button" onclick="addToCart('Dessert Platter', 240)">Add to cart</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHECKOUT -->
-    <section id="checkout">
-      <h2 class="section-title">Cart & Checkout</h2>
-      <p class="section-subtitle">
-        Review your selected dishes, then choose a payment method (demo only).
-      </p>
-
-      <div class="checkout-layout">
-        <div class="card">
-          <h3>Your Cart</h3>
-          <p class="note">
-            Items you add from the menu will appear here. You can remove them before checkout.
-          </p>
-          <p id="cart-empty-msg" style="font-size:0.85rem; color:#9ca3af; margin-top:0.4rem;">
-            Your cart is empty. Please add something from the menu.
-          </p>
-          <ul id="cart-items" class="cart-list"></ul>
-          <p style="margin-top:0.5rem; font-size:0.9rem;">
-            Total: <strong id="cart-total">৳0</strong>
-          </p>
+          <img src="food9.jpg" alt="Mutton Curry">
+          <h3>Mutton Curry</h3>
+          <p class="menu-tagline">Soft mutton pieces in a homely curry gravy.</p>
+          <p class="price">৳380</p>
+          <button class="btn-add" type="button" onclick="addToCart('Mutton Curry', 380)">Add to cart</button>
         </div>
 
-        <div class="card">
-          <h3>Checkout & Payment (Demo)</h3>
-          <p style="font-size:0.85rem; color:#cbd5f5;">
-            Select a payment method to continue. This is a demo, so actual payment is not connected yet.
-          </p>
-
-          <div class="payment-options">
-            <button type="button" class="payment-btn" onclick="selectPayment('bKash')">
-              <div>
-                <strong>bKash</strong><br>
-                <span>Send from your bKash account</span>
-              </div>
-              <div>📱</div>
-            </button>
-
-            <button type="button" class="payment-btn" onclick="selectPayment('Cash on delivery')">
-              <div>
-                <strong>Cash on Delivery</strong><br>
-                <span>Pay in cash when the food arrives</span>
-              </div>
-              <div>💵</div>
-            </button>
-
-            <button type="button" class="payment-btn" onclick="selectPayment('Card payment')">
-              <div>
-                <strong>Card Payment</strong><br>
-                <span>Use debit or credit card</span>
-              </div>
-              <div>💳</div>
-            </button>
-          </div>
-
-          <p id="payment-status" class="note"></p>
-          <p class="note">
-            Note: Payment methods are not integrated yet. For real orders, please contact via phone or message.
-          </p>
+        <div class="card menu-card">
+          <img src="food10.jpg" alt="Mutton Chops">
+          <h3>Mutton Chops</h3>
+          <p class="menu-tagline">Spiced and grilled mutton chops, great as a special item.</p>
+          <p class="price">৳450</p>
+          <button class="btn-add" type="button" onclick="addToCart('Mutton Chops', 450)">Add to cart</button>
         </div>
       </div>
     </section>
@@ -741,9 +603,24 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const cart = [];
-    let toastTimeout;
+    const CART_KEY = "kabirasCulinaryCart";
+    let cart = [];
 
+    function loadCart() {
+      try {
+        const saved = localStorage.getItem(CART_KEY);
+        cart = saved ? JSON.parse(saved) : [];
+      } catch (e) {
+        cart = [];
+      }
+      updateCartCount();
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    let toastTimeout;
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
@@ -764,68 +641,16 @@
 
     function addToCart(name, price) {
       cart.push({ name, price });
-      renderCart();
+      saveCart();
       updateCartCount();
       showToast("Added to cart");
     }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      renderCart();
-      updateCartCount();
-      showToast("Removed from cart");
+    function goToCheckout() {
+      window.location.href = "checkout.html";
     }
 
-    function renderCart() {
-      const list = document.getElementById("cart-items");
-      const emptyMsg = document.getElementById("cart-empty-msg");
-      const totalEl = document.getElementById("cart-total");
-      if (!list || !emptyMsg || !totalEl) return;
-
-      list.innerHTML = "";
-
-      if (cart.length === 0) {
-        emptyMsg.style.display = "block";
-        totalEl.textContent = "৳0";
-        return;
-      }
-
-      emptyMsg.style.display = "none";
-
-      let total = 0;
-
-      cart.forEach((item, index) => {
-        total += item.price;
-        const li = document.createElement("li");
-        const left = document.createElement("span");
-        left.textContent = item.name + " – ৳" + item.price;
-        const btn = document.createElement("button");
-        btn.textContent = "Remove";
-        btn.className = "btn-remove";
-        btn.onclick = function () {
-          removeFromCart(index);
-        };
-        li.appendChild(left);
-        li.appendChild(btn);
-        list.appendChild(li);
-      });
-
-      totalEl.textContent = "৳" + total;
-    }
-
-    function scrollToCheckout() {
-      const section = document.getElementById("checkout");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-
-    function selectPayment(method) {
-      const status = document.getElementById("payment-status");
-      status.textContent =
-        method + " option selected. Payment is not integrated yet. This is a demo checkout.";
-      showToast(method + " selected");
-    }
+    loadCart();
   </script>
 </body>
 </html>
