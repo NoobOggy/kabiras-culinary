@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kabira's Culinary | Checkout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 7%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fed7aa;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #f97316;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 0.35rem 1rem;
+      font-size: 0.85rem;
+      background: transparent;
+      color: #e5e7eb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    main {
+      padding: 2.3rem 7% 3.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1.3rem;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid #1f2937;
+      padding: 1.3rem;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-list {
+      list-style: none;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    .cart-list li {
+      margin-bottom: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .cart-empty {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .cart-total {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 0.7rem;
+      border: 1px solid #1f2937;
+      background: #020617;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #f97316;
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.5rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(248, 113, 113, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      margin-top: 0.4rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.7);
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 1.2rem 7%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .toast {
+      position: fixed;
+      right: 1.3rem;
+      bottom: 1.3rem;
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding-inline: 5%;
+      }
+      main {
+        padding-inline: 5%;
+      }
+      .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-area">
+      <div class="logo-img">
+        <img src="kabiras-logo.jpg" alt="Kabira's Culinary logo">
+      </div>
+      <div class="logo-text">KABIRA'S CULINARY</div>
+    </div>
+    <nav>
+      <a href="index.html">← Back to menu</a>
+      <button class="btn-ghost" type="button" onclick="window.location.href='index.html'">
+        🛒 Edit cart
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="section-title">Checkout</h1>
+    <p class="section-subtitle">
+      Review your order and fill in your details. This is a demo checkout – payment is not connected yet.
+    </p>
+
+    <div class="checkout-grid">
+      <!-- Cart summary -->
+      <div class="card">
+        <h3>Your Order</h3>
+        <p id="cart-empty" class="cart-empty">
+          Your cart is empty. Please go back to the menu and add some items.
+        </p>
+        <ul id="cart-items" class="cart-list"></ul>
+        <p class="cart-total">
+          Total: <strong id="cart-total">৳0</strong>
+        </p>
+      </div>
+
+      <!-- Checkout form -->
+      <div class="card">
+        <h3>Delivery Details</h3>
+        <form id="checkout-form" onsubmit="handleSubmit(event)">
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div>
+            <label for="address">Delivery Address</label>
+            <textarea id="address" name="address" placeholder="Flat / house, road, block, area" required></textarea>
+          </div>
+
+          <div>
+            <label for="phone">Contact Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="01XXXXXXXXX" required />
+          </div>
+
+          <div>
+            <label for="payment">Payment Method</label>
+            <select id="payment" name="payment" required>
+              <option value="">Select payment method</option>
+              <option value="bKash">bKash</option>
+              <option value="Cash on delivery">Cash on delivery</option>
+              <option value="Card payment">Card payment</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary">Place Order (Demo)</button>
+          <p id="form-status" class="note"></p>
+          <p class="note">
+            Note: Payment is not integrated yet. This is a demo flow. For real orders, contact Kabira directly.
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Kabira's Culinary — Bashundhara R/A, Dhaka.
+  </footer>
+
+  <div id="toast" class="toast">Demo message</div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const CART_KEY = "kabirasCulinaryCart";
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+    function loadCart() {
+      let cart = [];
+      try {
+        const saved = localStorage.getItem(CART_KEY);
+        cart = saved ? JSON.parse(saved) : [];
+      } catch (e) {
+        cart = [];
+      }
+
+      const list = document.getElementById("cart-items");
+      const emptyMsg = document.getElementById("cart-empty");
+      const totalEl = document.getElementById("cart-total");
+
+      list.innerHTML = "";
+      if (!cart.length) {
+        emptyMsg.style.display = "block";
+        totalEl.textContent = "৳0";
+        return;
+      }
+
+      emptyMsg.style.display = "none";
+
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const li = document.createElement("li");
+        li.textContent = item.name + " – ৳" + item.price;
+        list.appendChild(li);
+      });
+
+      totalEl.textContent = "৳" + total;
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const payment = document.getElementById("payment").value;
+
+      if (!payment) {
+        showToast("Please select a payment method");
+        return;
+      }
+
+      const status = document.getElementById("form-status");
+      status.textContent =
+        "Thank you, " +
+        name +
+        ". You selected \"" +
+        payment +
+        "\" as payment. This is a demo only – payment is not integrated yet. Please contact Kabira directly to confirm your order.";
+
+      showToast("Order submitted (demo)");
+
+      // Do NOT clear cart, since it's just a demo
+      // e.target.reset();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
