@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kabira's Culinary | Home Cooked Food Delivery</title>
+  <meta name="description" content="Kabira's Culinary - Home-based online food delivery from Bashundhara R/A, Dhaka. Fresh, homemade meals delivered to your door.">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 7%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fed7aa;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #f97316;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(248, 113, 113, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.7);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      background: transparent;
+      color: #e5e7eb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    .cart-count {
+      background: #f97316;
+      color: #111827;
+      border-radius: 999px;
+      padding: 0 0.45rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 2.4rem 7% 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #f97316;
+      font-size: 0.7rem;
+      color: #fed7aa;
+      background: rgba(248, 113, 22, 0.12);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.1vw, 3.1rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #f97316, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: #cbd5f5;
+      max-width: 32rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tag {
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.75rem;
+      color: #e5e7eb;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 0.4rem;
+    }
+
+    .hero-actions small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .hero-card {
+      border-radius: 1.6rem;
+      border: 1px solid #4b5563;
+      padding: 1.6rem;
+      background:
+        radial-gradient(circle at top left, rgba(248, 113, 22, 0.25), transparent 60%),
+        radial-gradient(circle at bottom, rgba(8, 47, 73, 0.9), transparent 55%),
+        #020617;
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card p {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-left: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-photo {
+      margin-top: 0.8rem;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      border: 1px solid rgba(248, 250, 252, 0.05);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid #1f2937;
+      padding: 1.3rem;
+      background: rgba(15, 23, 42, 0.95);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+      border-color: #f97316;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .card p {
+      font-size: 0.87rem;
+      color: #cbd5f5;
+      margin-bottom: 0.5rem;
+    }
+
+    .card small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .info-list {
+      list-style: none;
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .info-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .menu-card img {
+      width: 100%;
+      border-radius: 0.9rem;
+      margin-bottom: 0.6rem;
+      object-fit: cover;
+      max-height: 170px;
+    }
+
+    .menu-card h3 {
+      margin-bottom: 0.2rem;
+    }
+
+    .menu-tagline {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.3rem;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #facc15;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-add {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      background: #f97316;
+      color: #111827;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 10px 28px rgba(249, 115, 22, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-add:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+      box-shadow: 0 16px 40px rgba(249, 115, 22, 0.75);
+    }
+
+    .checkout-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 1.8rem;
+    }
+
+    .cart-list {
+      list-style: none;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    .cart-list li {
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .btn-remove {
+      border-radius: 999px;
+      border: none;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.7rem;
+      background: #ef4444;
+      color: #f9fafb;
+      cursor: pointer;
+    }
+
+    .btn-remove:hover {
+      opacity: 0.9;
+    }
+
+    .payment-options {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .payment-btn {
+      border-radius: 0.7rem;
+      border: 1px solid #4b5563;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-align: left;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .payment-btn span {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .payment-btn:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, 0.09);
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 1.4rem 7%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .toast {
+      position: fixed;
+      right: 1.3rem;
+      bottom: 1.3rem;
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(22, 163, 74, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding-inline: 5%;
+      }
+      main {
+        padding-inline: 5%;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .checkout-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav a:nth-child(2),
+      nav a:nth-child(3) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-area">
+      <div class="logo-img">
+        <!-- Rename your logo file to kabiras-logo.jpg and upload it next to index.html -->
+        <img src="kabiras-logo.jpg" alt="Kabira's Culinary logo">
+      </div>
+      <div class="logo-text">KABIRA'S CULINARY</div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <button class="btn-ghost" type="button" onclick="scrollToCheckout()">
+        🛒 Cart <span id="cart-count" class="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div>
+        <div class="hero-badge">
+          <span>🍲 Home-cooked food delivery in Dhaka</span>
+        </div>
+        <h1>Fresh, homemade meals from <span>Kabira's kitchen</span> to your door</h1>
+        <p>
+          Kabira's Culinary is a home-based online food service in Bashundhara R/A, Dhaka.
+          Every dish is cooked fresh, with care, just like you would make at home.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">Daily specials</span>
+          <span class="hero-tag">Made to order</span>
+          <span class="hero-tag">Delivery around Bashundhara & nearby</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#menu" class="btn-primary">Browse today's menu</a>
+          <button class="btn-ghost" type="button" onclick="scrollToCheckout()">
+            View cart 🛒 <span id="cart-count-hero" class="cart-count">0</span>
+          </button>
+          <small>Order timing depends on availability and prep time.</small>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Today's home kitchen</h2>
+        <p>Cooked from home in small batches, with focus on taste, hygiene and comfort food.</p>
+        <ul>
+          <li>✔ Warm, homemade Bangladeshi dishes</li>
+          <li>✔ Ideal for students, families, office lunches</li>
+          <li>✔ Simple pricing between ৳200–৳500</li>
+        </ul>
+        <div class="hero-photo">
+          <!-- Replace with a nice food hero image: e.g. food1.jpg -->
+          <img src="food1.jpg" alt="Home cooked meal from Kabira's Culinary">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About Kabira's Culinary</h2>
+      <p class="section-subtitle">
+        A home-based kitchen in Bashundhara, serving simple, satisfying meals for busy days.
+      </p>
+      <div class="about-grid">
+        <div class="card">
+          <h3>Who is Kabira?</h3>
+          <p>
+            Kabira cooks from home with a focus on everyday comfort food —
+            items you can eat regularly without feeling too heavy or oily.
+          </p>
+          <p>
+            The kitchen is small but careful about cleanliness, ingredient quality,
+            and consistency in taste.
+          </p>
+          <p>
+            Orders are prepared on demand and packed for delivery or pickup around
+            Bashundhara Residential Area and nearby.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Contact & Location</h3>
+          <ul class="info-list">
+            <li><strong>Address:</strong> Bashundhara R/A, Dhaka</li>
+            <li><strong>Phone:</strong> 017111222333</li>
+            <li><strong>Email:</strong> Kabira.Culinary@gmail.com</li>
+          </ul>
+          <p class="note" style="margin-top:0.7rem;">
+            Orders are usually taken in advance. Please contact by phone or message
+            if you need something urgent, bulk or for a special occasion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <h2 class="section-title">Menu</h2>
+      <p class="section-subtitle">
+        A small, rotating menu of homemade dishes. Prices are approximate and may vary slightly depending on ingredients.
+      </p>
+
+      <div class="menu-grid">
+        <div class="card menu-card">
+          <img src="food1.jpg" alt="Chicken Biryani">
+          <h3>Chicken Biryani</h3>
+          <p class="menu-tagline">Fragrant basmati rice with tender chicken and homemade masala.</p>
+          <p class="price">৳320</p>
+          <button class="btn-add" type="button" onclick="addToCart('Chicken Biryani', 320)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food2.jpg" alt="Beef Tehari">
+          <h3>Beef Tehari</h3>
+          <p class="menu-tagline">Classic Dhaka-style tehari with soft beef pieces.</p>
+          <p class="price">৳380</p>
+          <button class="btn-add" type="button" onclick="addToCart('Beef Tehari', 380)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food3.jpg" alt="Chicken Curry with Rice">
+          <h3>Chicken Curry with Rice</h3>
+          <p class="menu-tagline">Light, homely chicken curry with steamed rice.</p>
+          <p class="price">৳260</p>
+          <button class="btn-add" type="button" onclick="addToCart('Chicken Curry with Rice', 260)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food4.jpg" alt="Vegetable Khichuri">
+          <h3>Vegetable Khichuri</h3>
+          <p class="menu-tagline">Comforting moong daal khichuri with mixed vegetables.</p>
+          <p class="price">৳220</p>
+          <button class="btn-add" type="button" onclick="addToCart('Vegetable Khichuri', 220)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food5.jpg" alt="Grilled Chicken with Rice">
+          <h3>Grilled Chicken with Rice</h3>
+          <p class="menu-tagline">Lightly marinated grilled chicken with butter rice.</p>
+          <p class="price">৳350</p>
+          <button class="btn-add" type="button" onclick="addToCart('Grilled Chicken with Rice', 350)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food6.jpg" alt="Pasta Alfredo">
+          <h3>Pasta Alfredo</h3>
+          <p class="menu-tagline">Creamy white sauce pasta, mildly spiced for deshi taste.</p>
+          <p class="price">৳300</p>
+          <button class="btn-add" type="button" onclick="addToCart('Pasta Alfredo', 300)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food7.jpg" alt="Beef Curry with Paratha">
+          <h3>Beef Curry with Paratha</h3>
+          <p class="menu-tagline">Soft parathas served with slow-cooked beef curry.</p>
+          <p class="price">৳400</p>
+          <button class="btn-add" type="button" onclick="addToCart('Beef Curry with Paratha', 400)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food8.jpg" alt="Chicken Wrap">
+          <h3>Chicken Wrap</h3>
+          <p class="menu-tagline">Soft tortilla wrap filled with chicken, veggies and sauce.</p>
+          <p class="price">৳220</p>
+          <button class="btn-add" type="button" onclick="addToCart('Chicken Wrap', 220)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food9.jpg" alt="Mixed Fried Rice">
+          <h3>Mixed Fried Rice</h3>
+          <p class="menu-tagline">Egg, chicken and veggies in a flavourful fried rice.</p>
+          <p class="price">৳280</p>
+          <button class="btn-add" type="button" onclick="addToCart('Mixed Fried Rice', 280)">Add to cart</button>
+        </div>
+
+        <div class="card menu-card">
+          <img src="food10.jpg" alt="Dessert Platter">
+          <h3>Dessert Platter</h3>
+          <p class="menu-tagline">Small selection of homemade desserts (changes day to day).</p>
+          <p class="price">৳240</p>
+          <button class="btn-add" type="button" onclick="addToCart('Dessert Platter', 240)">Add to cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section id="checkout">
+      <h2 class="section-title">Cart & Checkout</h2>
+      <p class="section-subtitle">
+        Review your selected dishes, then choose a payment method (demo only).
+      </p>
+
+      <div class="checkout-layout">
+        <div class="card">
+          <h3>Your Cart</h3>
+          <p class="note">
+            Items you add from the menu will appear here. You can remove them before checkout.
+          </p>
+          <p id="cart-empty-msg" style="font-size:0.85rem; color:#9ca3af; margin-top:0.4rem;">
+            Your cart is empty. Please add something from the menu.
+          </p>
+          <ul id="cart-items" class="cart-list"></ul>
+          <p style="margin-top:0.5rem; font-size:0.9rem;">
+            Total: <strong id="cart-total">৳0</strong>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Checkout & Payment (Demo)</h3>
+          <p style="font-size:0.85rem; color:#cbd5f5;">
+            Select a payment method to continue. This is a demo, so actual payment is not connected yet.
+          </p>
+
+          <div class="payment-options">
+            <button type="button" class="payment-btn" onclick="selectPayment('bKash')">
+              <div>
+                <strong>bKash</strong><br>
+                <span>Send from your bKash account</span>
+              </div>
+              <div>📱</div>
+            </button>
+
+            <button type="button" class="payment-btn" onclick="selectPayment('Cash on delivery')">
+              <div>
+                <strong>Cash on Delivery</strong><br>
+                <span>Pay in cash when the food arrives</span>
+              </div>
+              <div>💵</div>
+            </button>
+
+            <button type="button" class="payment-btn" onclick="selectPayment('Card payment')">
+              <div>
+                <strong>Card Payment</strong><br>
+                <span>Use debit or credit card</span>
+              </div>
+              <div>💳</div>
+            </button>
+          </div>
+
+          <p id="payment-status" class="note"></p>
+          <p class="note">
+            Note: Payment methods are not integrated yet. For real orders, please contact via phone or message.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Kabira's Culinary — Home-cooked food from Bashundhara R/A, Dhaka.
+  </footer>
+
+  <div id="toast" class="toast">Added to cart</div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const cart = [];
+    let toastTimeout;
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2000);
+    }
+
+    function updateCartCount() {
+      const count = cart.length;
+      const el1 = document.getElementById("cart-count");
+      const el2 = document.getElementById("cart-count-hero");
+      if (el1) el1.textContent = count;
+      if (el2) el2.textContent = count;
+    }
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      renderCart();
+      updateCartCount();
+      showToast("Added to cart");
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+      updateCartCount();
+      showToast("Removed from cart");
+    }
+
+    function renderCart() {
+      const list = document.getElementById("cart-items");
+      const emptyMsg = document.getElementById("cart-empty-msg");
+      const totalEl = document.getElementById("cart-total");
+      if (!list || !emptyMsg || !totalEl) return;
+
+      list.innerHTML = "";
+
+      if (cart.length === 0) {
+        emptyMsg.style.display = "block";
+        totalEl.textContent = "৳0";
+        return;
+      }
+
+      emptyMsg.style.display = "none";
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        const li = document.createElement("li");
+        const left = document.createElement("span");
+        left.textContent = item.name + " – ৳" + item.price;
+        const btn = document.createElement("button");
+        btn.textContent = "Remove";
+        btn.className = "btn-remove";
+        btn.onclick = function () {
+          removeFromCart(index);
+        };
+        li.appendChild(left);
+        li.appendChild(btn);
+        list.appendChild(li);
+      });
+
+      totalEl.textContent = "৳" + total;
+    }
+
+    function scrollToCheckout() {
+      const section = document.getElementById("checkout");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    function selectPayment(method) {
+      const status = document.getElementById("payment-status");
+      status.textContent =
+        method + " option selected. Payment is not integrated yet. This is a demo checkout.";
+      showToast(method + " selected");
+    }
+  </script>
+</body>
+</html>
